@@ -52,6 +52,9 @@ class Grafo(object):
     def del_vertice(self, vertice_a):
         if vertice_a in self.v_list:
             self.v_list.remove(vertice_a)
+            for aresta in self.a_list:
+                if (aresta.vertice_mae.id == vertice_a.id) or (aresta.vertice_pai.id == vertice_a.id):
+                    self.a_list.remove(aresta)
             return "Vertice removido"
         else:
             return "Vertice não encontrado"
